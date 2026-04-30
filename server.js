@@ -1,0 +1,20 @@
+const express = require('express');
+const path = require('path');
+
+const validar = require('path');
+
+const app = express();
+
+app.use(express.json());
+
+// SERVIR ARQUIVOS ESTATICOS
+app.use(express.static(path.join(__dirname, 'public')));
+
+//ROTA COM MIDDLEWARE
+app.post('/cadastro', validar, (req, res) => {
+    res.json({ mensagem: "paciente cadastrado com sucesso"});
+});
+
+app.listen(3000, () => {
+    console.log("rodando na porta 3000");
+});
